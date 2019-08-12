@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h1>PSYCHIC GAME</h1>
+    <p>Wins: <span id = "winCount"></span></p>
+    <p>Lossses: <span id = "lossCount"></span></p>
+    <p>You have <span id = remainingCount></span> guesses remaining</p>
+    <p>Your Guesses so Far: <span id = "guessTally"></span></p>
+
+    <script>
+    var wins = 0
+    var losses = 0
+    var guessesRemaining
+    var guessesSoFar = []
+    var correctletter
+    var playerInput
+
+    function GenerateNumber()
+    {
+        var guessnumberindex = Math.floor(Math.random() *26)+1
+        switch(guessnumberindex)
+                {
+                    case 1:
+                    correctletter = "a"
+                    break;
+                    case 2:
+                    correctletter = "b"
+                    break;
+                    case 3:
+                    correctletter = "c"
+                    break;
+                    case 4:
+                    correctletter = "d"
+                    break;
+                    case 5:
+                    correctletter = "e"
+                    break;
+                    case 6:
+                    correctletter = "f"
+                    break;
+                    case 7:
+                    correctletter = "g"
+                    break;
+                    case 8:
+                    correctletter = "h"
+                    break;
+                    case 9:
+                    correctletter = "i"
+                    break;
+                    case 10:
+                    correctletter = "j"
+                    break;
+                    case 11:
+                    correctletter = "k"
+                    break;
+                    case 12:
+                    correctletter = "l"
+                    break;
+                    case 13:
+                    correctletter = "m"
+                    break;
+                    case 14:
+                    correctletter = "n"
+                    break;
+                    case 15:
+                    correctletter = "o"
+                    break;
+                    case 16:
+                    correctletter = "p"
+                    break;
+                    case 17:
+                    correctletter = "q"
+                    break;
+                    case 18:
+                    correctletter = "r"
+                    break;
+                    case 19:
+                    correctletter = "s"
+                    break;
+                    case 20:
+                    correctletter = "t"
+                    break;
+                    case 21:
+                    correctletter = "u"
+                    break;
+                    case 22:
+                    correctletter = "v"
+                    break;
+                    case 23:
+                    correctletter = "w"
+                    break;
+                    case 24:
+                    correctletter = "x"
+                    break;
+                    case 25:
+                    correctletter = "y"
+                    break;
+                    case 26:
+                    correctletter = "z"
+                    break;
+                }
+        
+        //this was included intentionally to test all functinoality
+        console.log(correctletter);
+    }
+    function startGame()
+        {
+            guessesRemaining = 9;
+            guessesSoFar = [];
+            GenerateNumber();
+            document.getElementById("remainingCount").innerHTML = guessesRemaining;
+            document.getElementById("lossCount").innerHTML = losses;
+            document.getElementById("winCount").innerHTML = wins;
+            document.getElementById("guessTally").innerHTML = guessesSoFar;
+        }
+
+    startGame();
+        
+            document.onkeyup = function(event)
+            {
+                switch (event.key)
+                    {
+                        case "a":
+                        playerInput = "a";
+                        break;
+                        case "b":
+                        playerInput = "b";
+                        break;
+                        case "c":
+                        playerInput = "c";
+                        break;
+                        case "d":
+                        playerInput = "d";
+                        break;
+                        case "e":
+                        playerInput = "e";
+                        break;
+                        case "f":
+                        playerInput = "f";
+                        break;
+                        case "g":
+                        playerInput = "g";
+                        break;
+                        case "h":
+                        playerInput = "h";
+                        break;
+                        case "i":
+                        playerInput = "i";
+                        break;
+                        case "j":
+                        playerInput = "j";
+                        break;
+                        case "k":
+                        playerInput = "k";
+                        break;
+                        case "l":
+                        playerInput = "l";
+                        break;
+                        case "m":
+                        playerInput = "m";
+                        break;
+                        case "n":
+                        playerInput = "n";
+                        break;
+                        case "o":
+                        playerInput = "o";
+                        break;
+                        case "p":
+                        playerInput = "p";
+                        break;
+                        case "q":
+                        playerInput = "q";
+                        break;
+                        case "r":
+                        playerInput = "r";
+                        break;
+                        case "s":
+                        playerInput = "s";
+                        break;
+                        case "t":
+                        playerInput = "t";
+                        break;
+                        case "u":
+                        playerInput = "u";
+                        break;
+                        case "v":
+                        playerInput = "v";
+                        break;
+                        case "w":
+                        playerInput = "w";
+                        break;
+                        case "x":
+                        playerInput = "x";
+                        break;
+                        case "y":
+                        playerInput = "y";
+                        break;
+                        case "z":
+                        playerInput = "z";
+                        break;
+                    }
+                    if(playerInput === correctletter)
+                    {
+                        wins++;
+                        document.getElementById("winCount").innerHTML = wins;
+                        startGame()
+                    }
+                    else
+                    {
+                        guessesSoFar.push(playerInput)
+                        guessesRemaining --;
+                        document.getElementById("remainingCount").innerHTML = guessesRemaining;
+                        document.getElementById("guessTally").innerHTML = guessesSoFar;
+                        if(guessesRemaining === 0)
+                        {
+                            losses++;
+                            document.getElementById("lossCount").innerHTML = losses;
+                            startGame();
+                        }
+                    }
+            }
+
+
+
+
+    </script>
+</body>
+</html>
